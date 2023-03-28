@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 import { createBookRouter } from "./routes/create_book";
 import { findByAuthorRouter } from "./routes/findByAuthor";
 import { findByLocationRouter } from "./routes/findByLocation";
+import { findByGenreRouter } from "./routes/findByGenre";
 const app = express();
 app.use(bodyParser.json());
 
@@ -16,7 +17,7 @@ const AppDataSource = new DataSource({
     port: 5432,
     username: "parth",
     password: "1234",
-    database: "typeorm1",
+    database: "typeorm",
     entities:[Book,Location,Genre],
     synchronize: true,
 })
@@ -27,6 +28,7 @@ AppDataSource.initialize()
         
         app.use(createBookRouter);
         app.use(findByAuthorRouter);
+        app.use(findByGenreRouter);
         app.use(findByLocationRouter);
 
 
