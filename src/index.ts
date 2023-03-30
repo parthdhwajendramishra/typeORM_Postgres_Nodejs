@@ -3,11 +3,16 @@ import express from 'express';
 import { Book } from "./entities/Book";
 import { Location } from "./entities/Location";
 import { Genre } from "./entities/Genre";
-const bodyParser = require('body-parser');
+import bodyParser from 'body-parser';
 import { createBookRouter } from "./routes/create_book";
 import { findByAuthorRouter } from "./routes/findByAuthor";
 import { findByLocationRouter } from "./routes/findByLocation";
 import { findByGenreRouter } from "./routes/findByGenre";
+import { deleteLocationRouter } from "./routes/deleteLocation";
+import { deleteGenreRouter } from "./routes/deleteGenre";
+import { deleteBookRouter } from "./routes/deleteBook";
+import { updateBookRouter } from "./routes/updateBook";
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -30,6 +35,10 @@ AppDataSource.initialize()
         app.use(findByAuthorRouter);
         app.use(findByGenreRouter);
         app.use(findByLocationRouter);
+        app.use(deleteLocationRouter);
+        app.use(deleteGenreRouter);
+        app.use(deleteBookRouter);
+        app.use(updateBookRouter);
 
 
         app.listen(8080, () => {

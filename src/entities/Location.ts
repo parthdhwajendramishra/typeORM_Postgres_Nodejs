@@ -1,9 +1,13 @@
-import { Entity, Column, BaseEntity, ManyToMany, PrimaryColumn } from "typeorm"
+import { Entity, Column, BaseEntity, ManyToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm"
 import { Book } from "./Book"
 
 @Entity()
 export class Location extends BaseEntity {
-    @PrimaryColumn()
+
+    @PrimaryGeneratedColumn()
+    id:number
+
+    @Column()
     Location_Name: string
 
     @ManyToMany(() => Book, (book) => book.AvailableLocations,{

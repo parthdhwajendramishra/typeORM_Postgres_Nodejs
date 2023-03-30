@@ -7,7 +7,7 @@ export class Genre extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number
     
-    @Column({ unique: true })
+    @Column()
     __Genre: string;
 
     @OneToMany(() => Book, (book) => book.Book_Genre,{ cascade: true })
